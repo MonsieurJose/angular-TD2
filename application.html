@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app ="ListesApp">
 <head>
     <meta charset="UTF-8">
     <title>TD2</title>
@@ -12,7 +12,15 @@
 <body ng-controller="ListesController as Listes">
     <h4>Sélectionnez vos produits</h4><br>
     <select size = "8" multiple ="multiple" size = "10"
-            data-ng-options="item.title for item in items" data-ng-model="Listes.DispoItems">
+            data-ng-options="item.title for item in Listes.dispoItems" data-ng-model="Listes.selectedDispoItems">
+    </select>
+    <input class = "" type ="button" id =">|" value =">|" name=">|" data-ng-click="Listes.addToIncluded()">
+    <input type ="button" id =">>|" value =">>|" name=">>|" data-ng-click="Listes.addAllToIncluded()">
+    <input type ="button" id ="|<<" value ="|<<" name="|<<" data-ng-click="Listes.RemoveAllFromIncluded()">
+    <input type ="button" id ="|<" value ="|<" name="|<" data-ng-click="Listes.removeFromIncluded()">
+
+    <select size = "8" multiple ="multiple" size = "10"
+            data-ng-options="item.title for item in Listes.includedItems" data-ng-model="Listes.selectedIncludedItems">
     </select>
 </body>
 </html>

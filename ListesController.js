@@ -4,10 +4,9 @@
 
 angular.module("ListesApp").controller("ListesController",['$cookies',function($cookies){
     var self = this;
-    var selectedDispoItems;
-    var selectedIncludedItems;
-    var includedItems;
-    var dispoItems;
+    this.selectedDispoItems=[];
+    this.selectedIncludedItems=[];
+    this.includedItems=[];
     this.dispoItems = [
         {
             "url": "http://tutorialzine.com/2013/07/50-must-have-plugins-for-extending-twitter-bootstrap/",
@@ -44,6 +43,31 @@ angular.module("ListesApp").controller("ListesController",['$cookies',function($
             "title": "Your First Backbone.js App – Service Chooser",
             "image": "http://cdn.tutorialzine.com/wp-content/uploads/2013/04/service_chooser_form-100x100.jpg"
         }
-    ]
-
+    ];
+    this.addToIncluded = function() {
+        if (self.selectedDispoItems.length != 0) {
+            for (var i=0; i < self.selectedDispoItems.length;i++) {
+                self.includedItems.push(self.selectedDispoItems[i]);
+                self.dispoItems.splice(self.dispoItems.indexOf(self.selectedDispoItems[i]),1);
+            };
+        }
+    };
+    this.addAllToIncluded = function () {
+        if (self.dispoItems.length != 0) {
+            self.includedItems = self.dispoItems;
+            self.dispoItems = [];
+        }
+    };
+    this.removeFromIncluded = function () {
+        if (self.selectedIncludedItems.length != 0) {
+            self.dispoItems.push(self.selectedIncludedItems);
+            self.selectedIncludedItems = [];
+        }
+    };
+    this.RemoveAllFromIncluded = function () {
+        if (self.includedItems.length != 0) {
+            self.dispoItems = self.includedItems;
+            self.includedItems = [];
+    }
+    };
 }]);
