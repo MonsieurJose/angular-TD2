@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TD2</title>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <script src="ListesController.js"></script>
+    <script src="angular-cookies.min.js"></script>
+    <link href="bootstrap-3.3.7-dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-controller="ListesController as Listes">
+    <h4>Sélectionnez vos produits</h4><br>
+    <select size = "8" multiple ="multiple" size = "10"
+            data-ng-options="item.title for item in items" data-ng-model="Listes.DispoItems">
+    </select>
+</body>
+</html>
