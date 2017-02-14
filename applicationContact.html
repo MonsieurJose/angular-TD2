@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ContactApp">
+<head>
+    <meta charset="UTF-8">
+    <title>TD2.2</title>
+    <script src="angular.min.js"></script>
+    <script src="ContactApp.js"></script>
+    <script src="ContactController.js"></script>
+    <link href="Semantic-UI-CSS-master/semantic.min.css" rel="stylesheet">
+    <link href="Semantic-UI-CSS-master/semantic.min.js" rel="stylesheet">
+    <link href="Semantic-UI-CSS-master/jquery-3.1.1.min.js" rel="stylesheet">
+</head>
+<body ng-controller="ContactController as ctrlContacts">
+    <input type="text" placeholder="Filtrer..." data-ng-model="q"
+           class = "form-control ng-valid ng-dirty ng-valid-parse ng-touched" style="margin-left: 15%; width:70%;">
+    <table class="ui very padded striped blue table" style = "width : 70% ; margin-left : 15%;">
+        <thead class="ui celled table">
+            <th>
+                <td>Nom</td>
+                <td>Prenom</td>
+                <td>Adresse</td>
+                <td></td>
+                <td></td>
+            </th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="contact in ctrlContacts.contacts" my-contact contact="contact"></tr>
+        </tbody>
+        <tfoot>
+            <tr><td><button class="ui icon button"><i class="red add Square icon" data-ng-click="ctrlContacts.toAdd()">
+                </i>Ajouter...</button></td></tr>
+        </tfoot>
+    </table>
+</body>
+</html>

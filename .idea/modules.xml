@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/angular-TD2.iml" filepath="$PROJECT_DIR$/.idea/angular-TD2.iml" />
+      <module fileurl="file://C:/xampp/htdocs/phalcon-tds/user-management/.idea/user-management.iml" filepath="C:/xampp/htdocs/phalcon-tds/user-management/.idea/user-management.iml" />
     </modules>
   </component>
 </project>
