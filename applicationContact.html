@@ -11,8 +11,8 @@
     <link href="Semantic-UI-CSS-master/jquery-3.1.1.min.js" rel="stylesheet">
 </head>
 <body ng-controller="ContactController as ctrlContacts">
-    <input type="text" placeholder="Filtrer..." data-ng-model="q"
-           class = "form-control ng-valid ng-dirty ng-valid-parse ng-touched" style="margin-left: 15%; width:70%;">
+    <div class = "form-control ng-valid ng-dirty ng-valid-parse ng-touched" style="margin-left: 15%; width:70%;">
+    <input type="text" placeholder="Filtrer..." data-ng-model="q"></div>
     <table class="ui very padded striped blue table" style = "width : 70% ; margin-left : 15%;">
         <thead class="ui celled table">
             <th>
@@ -24,12 +24,51 @@
             </th>
         </thead>
         <tbody>
-            <tr ng-repeat="contact in ctrlContacts.contacts" my-contact contact="contact"></tr>
+            <tr ng-repeat="contact in ctrlContacts.contacts|notDeleted|filter:q as results" my-contact contact="contact"></tr>
         </tbody>
         <tfoot>
-            <tr><td><button class="ui icon button"><i class="red add Square icon" data-ng-click="ctrlContacts.toAdd()">
-                </i>Ajouter...</button></td></tr>
+            <tr><td><button class="ui icon button" data-ng-click="ctrlContacts.toAdd()"><i class="red add Square icon" >
+                </i>Ajouter...</button>
+                <button class="ui icon button" data-ng-click="ctrlContacts.respawn()"><i class="red add Square icon" >
+                </i>Annuler les suppressions</button>
+            </td></tr>
         </tfoot>
+    </table>
+
+
+    <table class="ui very padded striped blue table" style = "width : 70% ; margin-left : 15%;" ng-show="ctrlContacts.visible==1">
+        <tbody class="ui celled table">
+        <th>
+        <td>
+            <div class="ui input"><input type="text" name="Nom" placeholder="Le nom" data-ng-model="ctrlContacts.tmpcontact.nom"/></div>
+            <div class="ui input"><input type="text" name="Prenom" placeholder="Le Prenom" data-ng-model="ctrlContacts.tmpcontact.prenom"/></div>
+            <div class="ui input"><input type="text" name="mail" placeholder="L'adresse mail" data-ng-model="ctrlContacts.tmpcontact.adresse"/></div>
+        </td>
+
+
+        <td>
+            <button class="ui icon button" data-ng-click="ctrlContacts.add()"><i class="green add Square icon">
+        </i>Valider</button>
+            <button class="ui icon button" data-ng-click="ctrlContacts.vider()"><i class="red remove icon" >
+        </i>Réinitialiser</button></td></th>
+        </tbody>
+    </table>
+    <table class="ui very padded striped blue table" style = "width : 70% ; margin-left : 15%;" ng-show="ctrlContacts.visible==2">
+        <tbody class="ui celled table">
+        <th>
+        <td>
+            <div class="ui input"><input type="text" name="Nom" placeholder="Le nom" data-ng-model="ctrlContacts.tmpcontact.nom"/></div>
+            <div class="ui input"><input type="text" name="Prenom" placeholder="Le Prenom" data-ng-model="ctrlContacts.tmpcontact.prenom"/></div>
+            <div class="ui input"><input type="text" name="mail" placeholder="L'adresse mail" data-ng-model="ctrlContacts.tmpcontact.adresse"/></div>
+        </td>
+
+
+        <td>
+            <button class="ui icon button" data-ng-click="ctrlContacts.update()"><i class="green add Square icon">
+            </i>Valider</button>
+            <button class="ui icon button" data-ng-click="ctrlContacts.vider()"><i class="red remove icon" >
+            </i>Réinitialiser</button></td></th>
+        </tbody>
     </table>
 </body>
 </html>

@@ -2,8 +2,8 @@
 <td>{{contact.prenom}}</td>
 <td>{{contact.adresse}}</td>
 <td>
-    <button class="ui icon button"><i class="blue edit icon"></i></button>
+    <button class="ui icon button" data-ng-click="ctrlContacts.toUpdate(contact)"><i class="blue edit icon"></i></button>
 </td>
 <td>
-    <button class="ui icon button"><i class="red remove icon" data-ng-click="ctrlContacts.delete()"></i></button>
+    <button class="ui icon button" data-ng-click="ctrlContacts.delete(contact)"><i class="red remove icon" ></i></button>
 </td>
